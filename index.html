@@ -72,6 +72,16 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/05/今天学了几个排序算法(一）/">今天学了几个排序算法（一）</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <p>（本篇实现均为升序）<br><img src="https://forum.mianbaoban.cn/data/attachment/forum/201803/20/140151tbt1kcsjbds6bsbd.jpg" alt="在这里插入图片描述"><br>1.冒泡排序<br>    最经典的排序算法。其思想是遍历未排序序列，通过比较相邻元素的值从而实现每次循环后将未排序序列中的最大值（构建升序序列）移至最后，后面的序列就是自动形成的有序序列，之前的序列被看做为排序序列。<br>   算法实现：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	   <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">	   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len - <span class="number">1</span>; i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; len - <span class="number">2</span> - i;j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[j] &gt; arr[j + <span class="number">1</span>])&#123;</span><br><span class="line">					<span class="keyword">int</span> temp = arr[j];</span><br><span class="line">              		arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">             		arr[j + <span class="number">1</span>] = temp; </span><br><span class="line">             		flag = <span class="literal">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">        		<span class="keyword">break</span>;</span><br><span class="line">        	&#125;</span><br><span class="line">        	flag = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -83,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/今天学了几个排序算法(一）/" data-id="cju3ksdia0002pku7fqqq75th" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/今天学了几个排序算法(一）/" data-id="cju3l5z9c0001qgu76baxywmx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,12 +125,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###this  is my first blog eritten by hexo###</p>
+        <p>###this  is my first blog written by hexo###</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/23/hello/" data-id="cju3ksdi60001pku75ofwiop4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/23/hello/" data-id="cju3l5z7s0000qgu796fhz1m3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/23/hello-world/" data-id="cju3ksdhr0000pku7ijs5lyf1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/23/hello-world/" data-id="cju3l5za90002qgu7iwkbn8is" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +216,7 @@
       <ul>
         
           <li>
-            <a href="/2019/04/05/今天学了几个排序算法(一）/">(no title)</a>
+            <a href="/2019/04/05/今天学了几个排序算法(一）/">今天学了几个排序算法（一）</a>
           </li>
         
           <li>
