@@ -18,13 +18,13 @@
   
   
   <title>Java EE - 02 做一个作业管理系统（jsp+servlet+layui） | Hexo</title>
-  <meta name="description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业">
+  <meta name="description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介github地址： 传送门技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业">
 <meta name="keywords" content="java,mysql,servlet,jsp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java EE - 02 做一个作业管理系统（jsp+servlet+layui）">
 <meta property="og:url" content="http://yoursite.com/2020/03/17/JAVAEE-02 做一个作业管理系统—jsp+servlet+layui/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业">
+<meta property="og:description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介github地址： 传送门技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200312224808793.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
@@ -54,10 +54,10 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200318212918159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200318213203488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200318224804284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-03-18T15:14:46.976Z">
+<meta property="og:updated_time" content="2020-03-18T16:25:16.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java EE - 02 做一个作业管理系统（jsp+servlet+layui）">
-<meta name="twitter:description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业">
+<meta name="twitter:description" content="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui） 简介github地址： 传送门技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。主要功能：&amp;nbsp; &amp;nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
   <!-- Canonical links -->
   <link rel="canonical" href="http://yoursite.com/2020/03/17/JAVAEE-02 做一个作业管理系统—jsp+servlet+layui/index.html">
@@ -442,7 +442,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h2 id="JAVAEE-02-做一个作业管理系统（jsp-servlet-layui）"><a href="#JAVAEE-02-做一个作业管理系统（jsp-servlet-layui）" class="headerlink" title="JAVAEE-02 做一个作业管理系统（jsp+servlet+layui）"></a>JAVAEE-02 做一个作业管理系统（jsp+servlet+layui）</h2><blockquote>
-<p>简介<br>技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。<br>主要功能：<br>&nbsp; &nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业，更改学生信息，更改作业信息，登出<br>&nbsp; &nbsp;学生：登录，查看作业、提交作业，登出</p>
+<p>简介<br>github地址： <a href="https://github.com/kelekle/homework" target="_blank" rel="noopener">传送门</a><br>技术实现：servlet + jsp + layui + mysql ， 之前学了下layui，所以顺便就用上了，还是蛮好用的哈哈。<br>主要功能：<br>&nbsp; &nbsp;老师：登录，注册，添加自己的新学生、作业（只能面向自己的学生，也可以是部分学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业，更改学生信息，更改作业信息，登出<br>&nbsp; &nbsp;学生：登录，查看作业、提交作业，登出</p>
 </blockquote>
 <h2 id="一、数据库设计"><a href="#一、数据库设计" class="headerlink" title="一、数据库设计"></a>一、数据库设计</h2><blockquote>
 <p>数据库一共有五张表,设计均满足第三范式要求:</p>
@@ -507,6 +507,7 @@
 <h2 id="六、代码重构"><a href="#六、代码重构" class="headerlink" title="六、代码重构"></a>六、代码重构</h2><p>一、改为Maven项目<br>由于之前的JavaEE 02项目（也就是学生作业管理系统）已经被我变成Maven了，不太好截图，就随便建了一个项目重新操作了下，顺便截了图<br> ①右键点击项目名称，点击Add Framework<br> <img src="https://img-blog.csdnimg.cn/20200318212918159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> ②选择Maven，点击OK就可以了<img src="https://img-blog.csdnimg.cn/20200318213203488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> ③此外，使用Maven还遇到了一个问题，在上面的总结心得中的第7条列了出来并找到了解决方法。</p>
 <p>④在pom.xml中导入jar包配置联网下载完毕后即可使用jar包<br>我只是用了mysql-connector和fastjson两个jar包，配置如下文件等待自动下载完毕后就可以使用了。<br><img src="https://img-blog.csdnimg.cn/20200318224804284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>二、关于数据库优化<br>前面的代码里有提到，具体使用了一个静态内部类的单例模式通过getInstance方法去获得获取数据库资源的类实例，然后封装了一个getConnection方法和两个关闭连接的方法。具体代码在第三部分代码设计中的数据库连接类中，代码我就不重复帖了，回过头看一下就可以喽。</p>
+<p>最后：github地址： <a href="https://github.com/kelekle/homework" target="_blank" rel="noopener">传送门</a></p>
 
       
     </div>
