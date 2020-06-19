@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614160833739.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200618224833392.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020061822554096.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/202006190814453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614175613800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614175841291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181115392.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200618221936875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181115427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020061822201183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200619080029803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181115489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181115474.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181712810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181712809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181712773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181712680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181851733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181947663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200619002643722.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200618220412652.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-06-19T01:14:33.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/kelekle" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">听风</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Xian, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/kelekle" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/java/" style="font-size: 14px;">java</a> <a href="/tags/jsp/" style="font-size: 13px;">jsp</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/servlet/" style="font-size: 13px;">servlet</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/19/作业管理系统实现——springboot+jsp/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-19T01:12:15.385Z" itemprop="datePublished">2020-06-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/03/17/JAVAEE-02 做一个作业管理系统—jsp+servlet+layui/" class="title">Java EE - 02 做一个作业管理系统（jsp+servlet+layui）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-03-17T02:41:00.529Z" itemprop="datePublished">2020-03-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/03/04/JavaEE-01/" class="title">Java EE - 01</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-03-04T15:50:39.798Z" itemprop="datePublished">2020-03-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/04/05/今天学了几个排序算法(一）/" class="title">今天学了几个排序算法（一）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-04-05T04:32:28.165Z" itemprop="datePublished">2019-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2019/03/23/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-03-23T04:08:14.749Z" itemprop="datePublished">2019-03-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-作业管理系统实现——springboot+jsp" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/06/19/作业管理系统实现——springboot+jsp/" class="article-date">
+	  <time datetime="2020-06-19T01:12:15.385Z" itemprop="datePublished">2020-06-19</time>
+	</a>
+</span>
+        
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/19/作业管理系统实现——springboot+jsp/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.4k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="作业管理系统"><a href="#作业管理系统" class="headerlink" title="作业管理系统"></a>作业管理系统</h1><blockquote>
+<p>简介：<br>&nbsp; &nbsp;技术：<br>&nbsp; &nbsp;&nbsp; &nbsp;jsp + springboot + layui + mybatis + docker + restful api<br>&nbsp; &nbsp;功能：<br>&nbsp; &nbsp;&nbsp; &nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完成情况，删除学生、作业，更改作业信息，退出登录<br>&nbsp; &nbsp;&nbsp; &nbsp;学生：登录，注册查看作业、提交作业（可重复提交），退出登录</p>
+<h6 id="nbsp-nbsp-github地址-项目传送门"><a href="#nbsp-nbsp-github地址-项目传送门" class="headerlink" title="&nbsp; &nbsp;github地址: 项目传送门"></a>&nbsp; &nbsp;github地址: <a href="https://github.com/kelekle/final_homework_management_system" target="_blank" rel="noopener">项目传送门</a></h6></blockquote>
+<h1 id="一、数据库设计"><a href="#一、数据库设计" class="headerlink" title="一、数据库设计"></a>一、数据库设计</h1><blockquote>
+<p>数据库一共有五张表,设计均满足第三范式要求:</p>
+<ol>
+<li>student(sid)&nbsp; &nbsp;</li>
+<li>teacher(tid)&nbsp;&nbsp;</li>
+<li>homework(hid)&nbsp; &nbsp;</li>
+<li>student_homework(sid, hid)</li>
+<li>teach(sid, tid)</li>
+</ol>
+</blockquote>
+<p>以下是数据库关系模式图<br><img src="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="二、用例设计"><a href="#二、用例设计" class="headerlink" title="二、用例设计"></a>二、用例设计</h1><blockquote>
+<p>用例图</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200614160833739.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="三、流程图设计"><a href="#三、流程图设计" class="headerlink" title="三、流程图设计"></a>三、流程图设计</h1><h2 id="1-学生流程"><a href="#1-学生流程" class="headerlink" title="1. 学生流程"></a>1. 学生流程</h2><p><img src="https://img-blog.csdnimg.cn/20200618224833392.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="2-教师流程"><a href="#2-教师流程" class="headerlink" title="2. 教师流程"></a>2. 教师流程</h2><p><img src="https://img-blog.csdnimg.cn/2020061822554096.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="四、详细设计"><a href="#四、详细设计" class="headerlink" title="四、详细设计"></a>四、详细设计</h1><h2 id="1-结构总览"><a href="#1-结构总览" class="headerlink" title="1. 结构总览"></a>1. 结构总览</h2><p><img src="https://img-blog.csdnimg.cn/202006190814453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>项目总共两大模块: core 和 web<br>core：<br>&nbsp; 主要包含model和util，model存放的是实体类，util存放工具类，这里存放了一个SpringContextUtil，用来获取Context创建bean<br>web：<br>&nbsp; java目录下主要包含一些源代码，config、controller、dao、service，分别存放配置类、路由映射、mybatis访问接口、服务.<br>&nbsp; resources下包含springboot的配置文件，mybatis-generator的配置文件，mybatis的mapper文件<br>&nbsp; web-app下包含jsp页面和web.xml</p>
+</blockquote>
+<h2 id="2-登录模块"><a href="#2-登录模块" class="headerlink" title="2. 登录模块"></a>2. 登录模块</h2><blockquote>
+<ol>
+<li>采用了前端cookie保持登录状态，当再次打开登录页面时，会进行登录状态的判断，若已登录且未退出，则会自动进行登录，登录成功与登出成功的时候则会改变cookie中的登录状态。</li>
+<li>添加了拦截器设置，用来检验登录状态，未登录时不能访问只有登录后才能访问的页面，通过WebConfig配置学生和老师相关操作的拦截器。</li>
+<li>记住密码功能，使用cookie记住最近一次登录成功的用户名+密码，不小心退出后可以直接登录。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//login.jsp进行登录判断，通过cookie获取登录状态和已登录的账号密码</span></span><br><span class="line">&lt;%</span><br><span class="line">    request.setCharacterEncoding(<span class="string">"utf-8"</span>); <span class="comment">//防止中文乱码</span></span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    <span class="keyword">boolean</span> studentLogged = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">boolean</span> teacherLogged = <span class="keyword">false</span>;</span><br><span class="line">    String username = <span class="string">""</span>;</span><br><span class="line">    String password = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span>(cookies != <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"loginStatus"</span>.equals(c.getName())) &#123;</span><br><span class="line">                String loginStatus = c.getValue();</span><br><span class="line">                <span class="keyword">if</span> (<span class="string">"student_true"</span>.equals(loginStatus)) &#123;</span><br><span class="line">                    response.sendRedirect(<span class="string">"/student/studentHome"</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"teacher_true"</span>.equals(loginStatus)) &#123;</span><br><span class="line">                    response.sendRedirect(<span class="string">"/teacher/teacherHome"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"loginStatus"</span>.equals(c.getName())) &#123;</span><br><span class="line">                String loginStatus = c.getValue();</span><br><span class="line">                <span class="keyword">if</span> (<span class="string">"student_false"</span>.equals(loginStatus)) &#123;</span><br><span class="line">                    studentLogged = <span class="keyword">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"teacher_false"</span>.equals(loginStatus)) &#123;</span><br><span class="line">                    teacherLogged = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(teacherLogged || studentLogged)&#123;</span><br><span class="line">            <span class="comment">//输入框显示账号密码</span></span><br><span class="line">            <span class="keyword">for</span>(Cookie c : cookies)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"username"</span>.equals(c.getName()))&#123;</span><br><span class="line">                    username = URLDecoder.decode(c.getValue(), <span class="string">"utf-8"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"password"</span>.equals(c.getName()))&#123;</span><br><span class="line">                    password = URLDecoder.decode(c.getValue(), <span class="string">"utf-8"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//login.jsp 显示密码</span></span><br><span class="line">&lt;% <span class="keyword">if</span>(!username.equals(<span class="string">""</span>) &amp;&amp; !password.equals(<span class="string">""</span>) &amp;&amp; studentLogged)&#123; %&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.getElementById(<span class="string">"s_username"</span>).value = &lt;%=username%&gt;;</span><br><span class="line">    document.getElementById(<span class="string">"s_password"</span>).value = &lt;%=password%&gt;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;%&#125;%&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//StudentInterceptor拦截示例</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Cookie[] cookies = request.getCookies();</span><br><span class="line">        String loginStatus = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"loginStatus"</span>.equals(c.getName())) &#123;</span><br><span class="line">                loginStatus = c.getValue();</span><br><span class="line">                <span class="keyword">if</span> (<span class="string">"student_true"</span>.equals(loginStatus)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        response.sendRedirect(<span class="string">"/login"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-service设计"><a href="#3-service设计" class="headerlink" title="3. service设计"></a>3. service设计</h2><blockquote>
+<ol>
+<li>抽象出StudentService和TeacherService两个接口，在impl包下进行实现，好处是有新的实现时上层不用做修改。<ol start="2">
+<li>使用@Transactional注解TeacherServiceImpl中的addHomework, removeStudent, deleteHomework三个方法，因为方法当中的多个sql必须绑定执行才符合逻辑，也可以使用之前学到的AOP代理实现，就是稍微麻烦点。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="4-Restful-api设计"><a href="#4-Restful-api设计" class="headerlink" title="4. Restful api设计"></a>4. Restful api设计</h2><table>
+<thead>
+<tr>
+<th>url</th>
+<th>method</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>get</td>
+<td>跳转至登录界面</td>
+</tr>
+<tr>
+<td>/login</td>
+<td>get</td>
+<td>跳转至登录界面</td>
+</tr>
+<tr>
+<td>/logout</td>
+<td>get</td>
+<td>退出登录</td>
+</tr>
+<tr>
+<td>/studentLogin</td>
+<td>post</td>
+<td>学生登录</td>
+</tr>
+<tr>
+<td>/teacherLogin</td>
+<td>post</td>
+<td>教师登录</td>
+</tr>
+<tr>
+<td>/studentRegister</td>
+<td>get</td>
+<td>跳转至学生注册界面</td>
+</tr>
+<tr>
+<td>/studentRegister</td>
+<td>post</td>
+<td>学生注册</td>
+</tr>
+<tr>
+<td>/teacherRegister</td>
+<td>get</td>
+<td>跳转至教师注册界面</td>
+</tr>
+<tr>
+<td>/teacherRegister</td>
+<td>post</td>
+<td>教师注册</td>
+</tr>
+<tr>
+<td>/register-success</td>
+<td>get</td>
+<td>注册成功界面</td>
+</tr>
+<tr>
+<td>/studentHome</td>
+<td>get</td>
+<td>学生主页（自己的作业列表）</td>
+</tr>
+<tr>
+<td>/homework</td>
+<td>get</td>
+<td>查看作业</td>
+</tr>
+<tr>
+<td>/homework</td>
+<td>post</td>
+<td>提交/更新作业</td>
+</tr>
+<tr>
+<td>/new-homework</td>
+<td>get</td>
+<td>跳转至添加作业界面</td>
+</tr>
+<tr>
+<td>/new-homework</td>
+<td>post</td>
+<td>添加作业</td>
+</tr>
+<tr>
+<td>/homework</td>
+<td>post</td>
+<td>修改作业</td>
+</tr>
+<tr>
+<td>/homework</td>
+<td>get</td>
+<td>跳转至修改作业界面</td>
+</tr>
+<tr>
+<td>/homework</td>
+<td>delete</td>
+<td>删除作业</td>
+</tr>
+<tr>
+<td>/new-student</td>
+<td>get</td>
+<td>跳转至给自己班级添加学生的界面</td>
+</tr>
+<tr>
+<td>/new-student</td>
+<td>post</td>
+<td>添加1个或多个学生到自己班级</td>
+</tr>
+<tr>
+<td>/student</td>
+<td>delete</td>
+<td>将学生移除班级</td>
+</tr>
+<tr>
+<td>/teacherHome</td>
+<td>get</td>
+<td>教师主页（该教师班级学生列表）</td>
+</tr>
+<tr>
+<td>/teacherHomework</td>
+<td>get</td>
+<td>作业列表(仅含该教师布置)</td>
+</tr>
+<tr>
+<td>/studentHomework</td>
+<td>get</td>
+<td>某一作业的所有学生的完成情况</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-其他设计"><a href="#5-其他设计" class="headerlink" title="5. 其他设计"></a>5. 其他设计</h2><blockquote>
+<ol>
+<li>js表单验证，登录、注册、提交作业以及布置作业时的验证。</li>
+<li>表单提交错误相关提示，密码错误、用户表不存在等提示信息。</li>
+<li>dao层与mapper是通过myabtis-generator插件生成的。</li>
+<li>重复提交时会自动显示之前提交内容，教师修改作业也是一样的</li>
+</ol>
+<p>这里举两个例子：<br> 密码必须6-12位，不含空格<br><img src="https://img-blog.csdnimg.cn/20200614175613800.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>密码错误：<br><img src="https://img-blog.csdnimg.cn/20200614175841291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</blockquote>
+<h1 id="五、界面展示"><a href="#五、界面展示" class="headerlink" title="五、界面展示"></a>五、界面展示</h1><h2 id="1-登录注册"><a href="#1-登录注册" class="headerlink" title="1.登录注册"></a>1.登录注册</h2><h5 id="1-1学生登录（登陆成功会用cookie记住账户密码）"><a href="#1-1学生登录（登陆成功会用cookie记住账户密码）" class="headerlink" title="1.1学生登录（登陆成功会用cookie记住账户密码）"></a>1.1学生登录（登陆成功会用cookie记住账户密码）</h5><p><img src="https://img-blog.csdnimg.cn/20200614181115392.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="1-2-教师登录-这里使用cookie记住了账户密码"><a href="#1-2-教师登录-这里使用cookie记住了账户密码" class="headerlink" title="1.2 教师登录(这里使用cookie记住了账户密码)"></a>1.2 教师登录(这里使用cookie记住了账户密码)</h5><p><img src="https://img-blog.csdnimg.cn/20200618221936875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="1-3-学生注册"><a href="#1-3-学生注册" class="headerlink" title="1.3 学生注册"></a>1.3 学生注册</h5><p><img src="https://img-blog.csdnimg.cn/20200614181115427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="1-4-教师注册"><a href="#1-4-教师注册" class="headerlink" title="1.4 教师注册"></a>1.4 教师注册</h5><p><img src="https://img-blog.csdnimg.cn/2020061822201183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="1-3-注册成功："><a href="#1-3-注册成功：" class="headerlink" title="1.3 注册成功："></a>1.3 注册成功：</h5><p><img src="https://img-blog.csdnimg.cn/20200619080029803.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="2-学生部分"><a href="#2-学生部分" class="headerlink" title="2.学生部分"></a>2.学生部分</h2><h5 id="2-1-学生主页"><a href="#2-1-学生主页" class="headerlink" title="2.1 学生主页"></a>2.1 学生主页</h5><p><img src="https://img-blog.csdnimg.cn/20200614181115489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="2-2-提交作业（可重复提交，之前有提交内容时会自动显示）"><a href="#2-2-提交作业（可重复提交，之前有提交内容时会自动显示）" class="headerlink" title="2.2 提交作业（可重复提交，之前有提交内容时会自动显示）"></a>2.2 提交作业（可重复提交，之前有提交内容时会自动显示）</h5><p><img src="https://img-blog.csdnimg.cn/20200614181115474.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="3-教师部分"><a href="#3-教师部分" class="headerlink" title="3. 教师部分"></a>3. 教师部分</h2><h5 id="3-1-主页（自己教的学生）"><a href="#3-1-主页（自己教的学生）" class="headerlink" title="3.1 主页（自己教的学生）"></a>3.1 主页（自己教的学生）</h5><p>可以对自己教的学生进行添加和移除<br><img src="https://img-blog.csdnimg.cn/20200614181712810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="3-2-从不属于自己学生的列表添加自己的学生"><a href="#3-2-从不属于自己学生的列表添加自己的学生" class="headerlink" title="3.2 从不属于自己学生的列表添加自己的学生"></a>3.2 从不属于自己学生的列表添加自己的学生</h5><p><img src="https://img-blog.csdnimg.cn/20200614181712809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="3-3-自己发布的作业列表，可以添加新作业、查看、删除某一作业"><a href="#3-3-自己发布的作业列表，可以添加新作业、查看、删除某一作业" class="headerlink" title="3.3 自己发布的作业列表，可以添加新作业、查看、删除某一作业"></a>3.3 自己发布的作业列表，可以添加新作业、查看、删除某一作业</h5><p><img src="https://img-blog.csdnimg.cn/20200614181712773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="3-4-修改作业内容（自动显示之前的内容）"><a href="#3-4-修改作业内容（自动显示之前的内容）" class="headerlink" title="3.4 修改作业内容（自动显示之前的内容）"></a>3.4 修改作业内容（自动显示之前的内容）</h5><p><img src="https://img-blog.csdnimg.cn/20200614181712680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="3-5-发布新的作业"><a href="#3-5-发布新的作业" class="headerlink" title="3.5 发布新的作业"></a>3.5 发布新的作业<img src="https://img-blog.csdnimg.cn/20200614181851733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></h5><h5 id="3-6-查看某一作业自己所有学生的完成情况"><a href="#3-6-查看某一作业自己所有学生的完成情况" class="headerlink" title="3.6 查看某一作业自己所有学生的完成情况"></a>3.6 查看某一作业自己所有学生的完成情况<img src="https://img-blog.csdnimg.cn/20200614181947663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></h5><h1 id="六、Docker部署-多模块Maven项目"><a href="#六、Docker部署-多模块Maven项目" class="headerlink" title="六、Docker部署(多模块Maven项目)"></a>六、Docker部署(多模块Maven项目)</h1><h2 id="1-docker-部署springboot镜像"><a href="#1-docker-部署springboot镜像" class="headerlink" title="1. docker 部署springboot镜像"></a>1. docker 部署springboot镜像</h2><h5 id="1-1环境准备（以下操作在springboot的web模块进行）"><a href="#1-1环境准备（以下操作在springboot的web模块进行）" class="headerlink" title="1.1环境准备（以下操作在springboot的web模块进行）"></a>1.1环境准备（以下操作在springboot的web模块进行）</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//由于springboot对jsp不友好，需要将maven-plugin改为1.4.2.RELEASE版本</span></span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;1.4.2.RELEASE&lt;/version&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;executable&gt;true&lt;/executable&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一些docker打包的插件</span></span><br><span class="line">			&lt;plugin&gt;</span><br><span class="line">                &lt;dependencies&gt;</span><br><span class="line">                    &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;javax.activation&lt;/groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;activation&lt;/artifactId&gt;</span><br><span class="line">                        &lt;version&gt;1.1&lt;/version&gt;</span><br><span class="line">                    &lt;/dependency&gt;</span><br><span class="line">                &lt;/dependencies&gt;</span><br><span class="line">                &lt;groupId&gt;com.spotify&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;dockerfile-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;1.4.13&lt;/version&gt;</span><br><span class="line">                &lt;executions&gt;</span><br><span class="line">                    &lt;execution&gt;</span><br><span class="line">                        &lt;id&gt;default&lt;/id&gt;</span><br><span class="line">                        &lt;goals&gt;</span><br><span class="line">                            &lt;goal&gt;build&lt;/goal&gt;</span><br><span class="line">                            &lt;goal&gt;push&lt;/goal&gt;</span><br><span class="line">                        &lt;/goals&gt;</span><br><span class="line">                    &lt;/execution&gt;</span><br><span class="line">                &lt;/executions&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;repository&gt;$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;&lt;/repository&gt;</span><br><span class="line">                    &lt;tag&gt;$&#123;project.version&#125;&lt;/tag&gt;</span><br><span class="line">                    &lt;buildArgs&gt;</span><br><span class="line">                        &lt;JAR_FILE&gt;$&#123;project.build.finalName&#125;.jar&lt;/JAR_FILE&gt;</span><br><span class="line">                    &lt;/buildArgs&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-Dockerfile编写"><a href="#1-2-Dockerfile编写" class="headerlink" title="1.2 Dockerfile编写"></a>1.2 Dockerfile编写</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:<span class="number">8</span>-jre</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>, <span class="string">"-jar"</span>, <span class="string">"/usr/share/myservice/app.jar"</span>]</span><br><span class="line"></span><br><span class="line">VOLUME /usr/share/myservice</span><br><span class="line"></span><br><span class="line">RUN mkdir -p /usr/share/myservice</span><br><span class="line"></span><br><span class="line">WORKDIR /usr/share/myservice</span><br><span class="line"></span><br><span class="line">ARG JAR_FILE</span><br><span class="line">ADD $&#123;JAR_FILE&#125; /usr/share/myservice/app.jar</span><br></pre></td></tr></table></figure>
+<h5 id="1-3开始制作"><a href="#1-3开始制作" class="headerlink" title="1.3开始制作"></a>1.3开始制作</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//进入父模块，执行如下命令，打包父工程里面的依赖</span></span><br><span class="line">mvn clean install <span class="keyword">package</span> -Dmaven.test.skip</span><br><span class="line"></span><br><span class="line"><span class="comment">//进入入口模块(一般是web模块，这儿是springboot的web模块)执行如下命令，入口镜像打包和生成镜像</span></span><br><span class="line">mvn <span class="keyword">package</span> dockerfile:build -Dmaven.test.skip</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用docker images查看生成镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h5 id="1-4-运行测试"><a href="#1-4-运行测试" class="headerlink" title="1.4 运行测试"></a>1.4 运行测试</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//本地运行测试</span></span><br><span class="line">docker run --name service -p <span class="number">8088</span>:<span class="number">8083</span> springboot/web:<span class="number">1.0</span>-SNAPSHOT</span><br></pre></td></tr></table></figure>
+<h6 id="截图（Docker-Desktop）"><a href="#截图（Docker-Desktop）" class="headerlink" title="截图（Docker Desktop）"></a>截图（Docker Desktop）</h6><p><img src="https://img-blog.csdnimg.cn/20200619002643722.png" alt="在这里插入图片描述"></p>
+<h2 id="2-docker-compose-部署springboot-mysql"><a href="#2-docker-compose-部署springboot-mysql" class="headerlink" title="2. docker-compose 部署springboot+mysql"></a>2. docker-compose 部署springboot+mysql</h2><h6 id="上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql"><a href="#上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql" class="headerlink" title="上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql"></a>上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql</h6><h5 id="2-1相关配置"><a href="#2-1相关配置" class="headerlink" title="2.1相关配置"></a>2.1相关配置</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在根目录下新建docker-compose.yml,配置springboot和mysql的相关配置</span></span><br><span class="line">version: <span class="string">'3.8'</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  webapp:</span><br><span class="line">    build:</span><br><span class="line">      context: ./web</span><br><span class="line">      dockerfile: Dockerfile</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">8088</span>:<span class="number">8083</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /vol/development</span><br><span class="line">    depends_on:</span><br><span class="line">      - mysql</span><br><span class="line">    links:</span><br><span class="line">      - mysql:mysql</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    container_name: mysql-container</span><br><span class="line">    build:</span><br><span class="line">      context: ./mysql</span><br><span class="line">      dockerfile: Dockerfile</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">33068</span>:<span class="number">3306</span></span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_DATABASE: <span class="class"><span class="keyword">class</span></span></span><br><span class="line">      MYSQL_ROOT_HOST: '%'</span><br><span class="line">      MYSQL_ROOT_PASSWORD: <span class="number">123456</span></span><br><span class="line">    command: [</span><br><span class="line">      <span class="string">'mysqld'</span>,</span><br><span class="line">      <span class="string">'--innodb-buffer-pool-size=20M'</span>,</span><br><span class="line">      <span class="string">'--character-set-server=utf8'</span>,</span><br><span class="line">      <span class="string">'--collation-server=utf8_general_ci'</span>,</span><br><span class="line">      <span class="string">'--default-time-zone=+8:00'</span>,</span><br><span class="line">      <span class="string">'--lower-case-table-names=1'</span>,</span><br><span class="line">      <span class="string">'--default-authentication-plugin=mysql_native_password'</span></span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-mysql目录下有两个文件：calss-sql和Dockerfile"><a href="#2-2-mysql目录下有两个文件：calss-sql和Dockerfile" class="headerlink" title="2.2 mysql目录下有两个文件：calss.sql和Dockerfile"></a>2.2 mysql目录下有两个文件：calss.sql和Dockerfile</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Dockerfile</span></span><br><span class="line">FROM mysql:<span class="number">8.0</span>.20</span><br><span class="line"><span class="comment">//将clas.sql添加到初始化执行的文件夹下，这样启动时就会自动执行</span></span><br><span class="line">ADD ./<span class="class"><span class="keyword">class</span>.<span class="title">sql</span> /<span class="title">docker</span>-<span class="title">entrypoint</span>-<span class="title">initdb</span>.<span class="title">d</span>/<span class="title">class</span>.<span class="title">sql</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="2-3-web目录下的-Dockerfile（和之前差不多）"><a href="#2-3-web目录下的-Dockerfile（和之前差不多）" class="headerlink" title="2.3 web目录下的 Dockerfile（和之前差不多）"></a>2.3 web目录下的 Dockerfile（和之前差不多）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Dockerfile</span></span><br><span class="line">FROM openjdk:<span class="number">8</span>-jre</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>, <span class="string">"-jar"</span>, <span class="string">"/usr/share/myservice/app.jar"</span>]</span><br><span class="line"></span><br><span class="line">VOLUME /usr/share/myservice</span><br><span class="line">RUN mkdir -p /usr/share/myservice</span><br><span class="line">WORKDIR /usr/share/myservice</span><br><span class="line"><span class="comment">//这里在我的机器之前的JAR_FILE报错，换了这个</span></span><br><span class="line">ADD /target/web.jar /usr/share/myservice/app.jar</span><br></pre></td></tr></table></figure>
+<h5 id="2-4-运行docker-compose命令"><a href="#2-4-运行docker-compose命令" class="headerlink" title="2.4 运行docker-compose命令"></a>2.4 运行docker-compose命令</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行该命令，制作启动镜像</span></span><br><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<h6 id="然后就可以成功制作并启动了（DockerDesktop）："><a href="#然后就可以成功制作并启动了（DockerDesktop）：" class="headerlink" title="然后就可以成功制作并启动了（DockerDesktop）："></a>然后就可以成功制作并启动了（DockerDesktop）：</h6><p><img src="https://img-blog.csdnimg.cn/20200618220412652.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h6 id="注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。"><a href="#注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。" class="headerlink" title="注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。"></a>注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。</h6><h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><blockquote>
+<ol>
+<li>使用layui如果想通过ajax提交form一定要在ajax提交后写上：return false;否则表单会提交两遍！</li>
+<li>springboot对jsp的支持较差，要添加的东西比较多，我在我的pom.xml中注释了出来，遇到问题的童鞋也可以参考一下。</li>
+<li>mybatis-generator插件真的好用，使用也比较简单，感兴趣的小伙伴可以学一下！</li>
+<li><p>关于mybatis，配置mapper和dao层时要求:<br>在mapper文件中namespace等于对应接口的全限定名；<br>接口中的方法名和mapper文件中的statement(,…标签)的id属性值一致;<br>接口中的方法输入值参数和mapper文件中statement的parameterType指定的类型一致。<br>接口中的方法的返回值类型和mapper文件中statement的resultType指定的类型一致。</p>
+</li>
+<li><p>docker访问外部时一定要注意将localhost之类的换成本地的ipv4地址！这里需要将springboot配置中的localhost更换成你的ipv4地址。</p>
+</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/" title target="_blank" rel="external">http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/kelekle" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/kelekle" target="_blank"><span class="text-dark">听风</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>日拱一卒，功不唐捐。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/03/17/JAVAEE-02 做一个作业管理系统—jsp+servlet+layui/" title="Java EE - 02 做一个作业管理系统（jsp+servlet+layui）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/kelekle" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle="tooltip" data-placement="top"><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle="tooltip" data-placement="top"><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'nwYzezhgylUmmHcBvjc7MxcD-gzGzoHsz',
+    appKey: '3DC127RssFlar0yWlo54pMck',
+    placeholder: '说点什么...',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
