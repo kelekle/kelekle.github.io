@@ -17,10 +17,11 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Hexo</title>
+  <title>作业管理系统实现——springboot+jsp | Hexo</title>
   <meta name="description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
+<meta name="keywords" content="java,mysql,jsp,springboot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="作业管理系统实现——springboot+jsp">
 <meta property="og:url" content="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
@@ -47,9 +48,9 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200614181947663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200619002643722.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200618220412652.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-06-19T01:14:33.100Z">
+<meta property="og:updated_time" content="2020-06-19T01:26:04.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="作业管理系统实现——springboot+jsp">
 <meta name="twitter:description" content="作业管理系统 简介：&amp;nbsp; &amp;nbsp;技术：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;jsp + springboot + layui + mybatis + docker + restful api&amp;nbsp; &amp;nbsp;功能：&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;老师：登录，注册，添加学生、作业（面向自己的学生），查看自己的学生、自己布置的作业以及学生作业的完">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020031221292546.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDQ2ODUy,size_16,color_FFFFFF,t_70">
   <!-- Canonical links -->
@@ -242,7 +243,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -252,7 +253,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/">springboot</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -262,7 +263,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/java/" style="font-size: 14px;">java</a> <a href="/tags/jsp/" style="font-size: 13px;">jsp</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/servlet/" style="font-size: 13px;">servlet</a>
+      <a href="/tags/java/" style="font-size: 14px;">java</a> <a href="/tags/jsp/" style="font-size: 13.5px;">jsp</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/servlet/" style="font-size: 13px;">servlet</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a>
     </div>
   </div>
 
@@ -287,10 +288,10 @@
             
             <div class="item-inner">
               <p class="item-category">
-                
+                <a class="category-link" href="/categories/java/">java</a>
               </p>
               <p class="item-title">
-                <a href="/2020/06/19/作业管理系统实现——springboot+jsp/" class="title">(no title)</a>
+                <a href="/2020/06/19/作业管理系统实现——springboot+jsp/" class="title">作业管理系统实现——springboot+jsp</a>
               </p>
               <p class="item-date">
                 <time datetime="2020-06-19T01:12:15.385Z" itemprop="datePublished">2020-06-19</time>
@@ -369,11 +370,28 @@
 
   
   
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#作业管理系统"><span class="toc-number">1.</span> <span class="toc-text">作业管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#nbsp-nbsp-github地址-项目传送门"><span class="toc-number">1.0.0.0.0.1.</span> <span class="toc-text">   github地址: 项目传送门</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#一、数据库设计"><span class="toc-number">2.</span> <span class="toc-text">一、数据库设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、用例设计"><span class="toc-number">3.</span> <span class="toc-text">二、用例设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、流程图设计"><span class="toc-number">4.</span> <span class="toc-text">三、流程图设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-学生流程"><span class="toc-number">4.1.</span> <span class="toc-text">1. 学生流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-教师流程"><span class="toc-number">4.2.</span> <span class="toc-text">2. 教师流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、详细设计"><span class="toc-number">5.</span> <span class="toc-text">四、详细设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-结构总览"><span class="toc-number">5.1.</span> <span class="toc-text">1. 结构总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-登录模块"><span class="toc-number">5.2.</span> <span class="toc-text">2. 登录模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-service设计"><span class="toc-number">5.3.</span> <span class="toc-text">3. service设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Restful-api设计"><span class="toc-number">5.4.</span> <span class="toc-text">4. Restful api设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-其他设计"><span class="toc-number">5.5.</span> <span class="toc-text">5. 其他设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、界面展示"><span class="toc-number">6.</span> <span class="toc-text">五、界面展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-登录注册"><span class="toc-number">6.1.</span> <span class="toc-text">1.登录注册</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1学生登录（登陆成功会用cookie记住账户密码）"><span class="toc-number">6.1.0.0.1.</span> <span class="toc-text">1.1学生登录（登陆成功会用cookie记住账户密码）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-教师登录-这里使用cookie记住了账户密码"><span class="toc-number">6.1.0.0.2.</span> <span class="toc-text">1.2 教师登录(这里使用cookie记住了账户密码)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-学生注册"><span class="toc-number">6.1.0.0.3.</span> <span class="toc-text">1.3 学生注册</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-教师注册"><span class="toc-number">6.1.0.0.4.</span> <span class="toc-text">1.4 教师注册</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-注册成功："><span class="toc-number">6.1.0.0.5.</span> <span class="toc-text">1.3 注册成功：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-学生部分"><span class="toc-number">6.2.</span> <span class="toc-text">2.学生部分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-学生主页"><span class="toc-number">6.2.0.0.1.</span> <span class="toc-text">2.1 学生主页</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-提交作业（可重复提交，之前有提交内容时会自动显示）"><span class="toc-number">6.2.0.0.2.</span> <span class="toc-text">2.2 提交作业（可重复提交，之前有提交内容时会自动显示）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-教师部分"><span class="toc-number">6.3.</span> <span class="toc-text">3. 教师部分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-主页（自己教的学生）"><span class="toc-number">6.3.0.0.1.</span> <span class="toc-text">3.1 主页（自己教的学生）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-从不属于自己学生的列表添加自己的学生"><span class="toc-number">6.3.0.0.2.</span> <span class="toc-text">3.2 从不属于自己学生的列表添加自己的学生</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-自己发布的作业列表，可以添加新作业、查看、删除某一作业"><span class="toc-number">6.3.0.0.3.</span> <span class="toc-text">3.3 自己发布的作业列表，可以添加新作业、查看、删除某一作业</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-修改作业内容（自动显示之前的内容）"><span class="toc-number">6.3.0.0.4.</span> <span class="toc-text">3.4 修改作业内容（自动显示之前的内容）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-发布新的作业"><span class="toc-number">6.3.0.0.5.</span> <span class="toc-text">3.5 发布新的作业</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-查看某一作业自己所有学生的完成情况"><span class="toc-number">6.3.0.0.6.</span> <span class="toc-text">3.6 查看某一作业自己所有学生的完成情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Docker部署-多模块Maven项目"><span class="toc-number">7.</span> <span class="toc-text">六、Docker部署(多模块Maven项目)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-docker-部署springboot镜像"><span class="toc-number">7.1.</span> <span class="toc-text">1. docker 部署springboot镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1环境准备（以下操作在springboot的web模块进行）"><span class="toc-number">7.1.0.0.1.</span> <span class="toc-text">1.1环境准备（以下操作在springboot的web模块进行）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-Dockerfile编写"><span class="toc-number">7.1.0.0.2.</span> <span class="toc-text">1.2 Dockerfile编写</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3开始制作"><span class="toc-number">7.1.0.0.3.</span> <span class="toc-text">1.3开始制作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-运行测试"><span class="toc-number">7.1.0.0.4.</span> <span class="toc-text">1.4 运行测试</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#截图（Docker-Desktop）"><span class="toc-number">7.1.0.0.4.1.</span> <span class="toc-text">截图（Docker Desktop）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-docker-compose-部署springboot-mysql"><span class="toc-number">7.2.</span> <span class="toc-text">2. docker-compose 部署springboot+mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql"><span class="toc-number">7.2.0.0.0.1.</span> <span class="toc-text">上面的是没有整合mysql的，依赖本地mysql，现在给springboot项目整合docker的mysql</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1相关配置"><span class="toc-number">7.2.0.0.1.</span> <span class="toc-text">2.1相关配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-mysql目录下有两个文件：calss-sql和Dockerfile"><span class="toc-number">7.2.0.0.2.</span> <span class="toc-text">2.2 mysql目录下有两个文件：calss.sql和Dockerfile</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-web目录下的-Dockerfile（和之前差不多）"><span class="toc-number">7.2.0.0.3.</span> <span class="toc-text">2.3 web目录下的 Dockerfile（和之前差不多）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-运行docker-compose命令"><span class="toc-number">7.2.0.0.4.</span> <span class="toc-text">2.4 运行docker-compose命令</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#然后就可以成功制作并启动了（DockerDesktop）："><span class="toc-number">7.2.0.0.4.1.</span> <span class="toc-text">然后就可以成功制作并启动了（DockerDesktop）：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。"><span class="toc-number">7.2.0.0.4.2.</span> <span class="toc-text">注：以上两种方式运行时都要将springboot中mysql配置中url中的ip换成自己电脑的ipv4地址。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、总结"><span class="toc-number">8.</span> <span class="toc-text">七、总结</span></a></li>
+    </nav>
+  </div>
+</aside>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-作业管理系统实现——springboot+jsp" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      作业管理系统实现——springboot+jsp
+    </h1>
+  
+
       
       <div class="article-meta">
         <span class="article-date">
@@ -383,7 +401,17 @@
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/java/">java</a>, <a class="article-tag-link" href="/tags/jsp/">jsp</a>, <a class="article-tag-link" href="/tags/mysql/">mysql</a>, <a class="article-tag-link" href="/tags/springboot/">springboot</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -631,7 +659,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/" title target="_blank" rel="external">http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/</a>
+      <a href="http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/" title="作业管理系统实现——springboot+jsp" target="_blank" rel="external">http://yoursite.com/2020/06/19/作业管理系统实现——springboot+jsp/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -682,6 +710,15 @@
       <a href="/2020/03/17/JAVAEE-02 做一个作业管理系统—jsp+servlet+layui/" title="Java EE - 02 做一个作业管理系统（jsp+servlet+layui）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
     
   </ul>
   
